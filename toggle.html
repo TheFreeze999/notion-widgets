@@ -8,16 +8,62 @@
 	<title>Toggle</title>
 
 	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
 		.toggle {
-			width: 70px;
-			height: 20px;
-			border: 1px solid black;
+			--toggle-width: 95px;
+			--toggle-height: 40px;
+			--outline-size: 4px;
+			translate: var(--outline-size) var(--outline-size);
+			width: var(--toggle-width);
+			height: var(--toggle-height);
+			outline: var(--outline-size) solid black;
+			border-radius: 9999px;
+			position: relative;
+			cursor: pointer;
+		}
+
+		/* KNOB */
+		.toggle::after {
+			--knob-size: 35px;
+			--offset: 3px;
+			content: "";
+			height: var(--knob-size);
+			aspect-ratio: 1 / 1;
+			border-radius: 50%;
+			background-color: lime;
+			position: absolute;
+			top: calc((var(--toggle-height) - var(--knob-size)) / 2);
+			left: var(--offset);
+			transition: all 100ms ease-in-out;
+		}
+
+		/* KNOB WHEN TOGGLE IS OFF */
+		.toggle.off::after {
+			background-color: red;
+			translate: calc(var(--toggle-width) - var(--offset) * 2 - var(--knob-size)) 0px;
 		}
 	</style>
+
+	<script defer>
+		function performToggle(element) {
+			if (element.classList.contains("off")) {
+				element.classList.remove("off");
+			} else {
+				element.classList.add("off");
+			}
+		}
+	</script>
 </head>
 
 <body>
-	<div class="toggle"></div>
+	<div class="toggle" onclick="performToggle(this)"></div>
 </body>
 
 </html>
