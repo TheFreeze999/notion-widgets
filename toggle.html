@@ -44,7 +44,7 @@
 			height: var(--knob-size);
 			aspect-ratio: 1 / 1;
 			border-radius: 50%;
-			background-color: lime;
+			background-color: blue;
 			position: absolute;
 			top: calc((var(--toggle-height) - var(--knob-size)) / 2);
 			left: var(--offset);
@@ -54,7 +54,7 @@
 		/* KNOB WHEN TOGGLE IS OFF */
 		.toggle.off::after {
 			background-color: red;
-			translate: calc(var(--toggle-width) - var(--offset) * 2 - var(--knob-size)) 0px;
+			transform: translateX(calc(var(--toggle-width) - var(--offset) * 2 - var(--knob-size)));
 		}
 	</style>
 
