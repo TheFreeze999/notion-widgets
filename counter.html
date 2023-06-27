@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Toggle</title>
+	<title>Counter</title>
 
 	<style>
 		*,
@@ -25,42 +25,84 @@
 
 		.counter {
 			width: 200px;
-			border: 1px solid black;
+			border: 4px solid black;
 			display: grid;
 			grid-template-rows: 50px 40px 30px;
 			grid-template-columns: repeat(2, 1fr);
+			font-family: monospace;
+		}
+
+		.counter>* {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		.number {
-			background: yellow;
+			background: rgb(255, 239, 202);
 			grid-column: span 2;
+			font-size: 28px;
+			font-weight: bold;
+			border-bottom: 3px solid black;
+		}
+
+		.btn {
+			cursor: pointer;
+			-webkit-user-select: none;
+			/* Safari */
+			-moz-user-select: none;
+			/* Firefox */
+			-ms-user-select: none;
+			/* IE10+/Edge */
+			user-select: none;
+			/* Standard */
+
+		}
+
+		.btn:hover {
+			opacity: 0.8;
+		}
+
+		.btn-adjust {
+			--border: 1px solid black;
+			background: linear-gradient(#bbb, #eee);
+			font-size: 21px;
+
 		}
 
 		.btn-increment {
-			background: green;
+			border-right: var(--border);
 		}
 
 		.btn-decrement {
-			background: blue;
+			border-left: var(--border);
 		}
 
 		.btn-reset {
-			background: red;
+			background: radial-gradient(#f99, red);
 			grid-column: span 2;
+			border-top: 3px solid black;
+			font-size: 16px;
 		}
 	</style>
 
 	<script defer>
-
+		function getCounterValue() {
+			return parseInt(document.querySelector('.number').innerText);
+		}
+		function setCounterValue(num) {
+			const numberEl = document.querySelector('.number');
+			numberEl.innerText = num.toString();
+		}
 	</script>
 </head>
 
 <body>
 	<div class="counter">
-		<div class="number"></div>
-		<div class="btn-adjust btn-increment"></div>
-		<div class="btn-adjust btn-decrement"></div>
-		<div class="btn-reset"></div>
+		<div class="number" contenteditable="true">0</div>
+		<div class="btn btn-adjust btn-increment" onclick="setCounterValue(getCounterValue() + 1)">+</div>
+		<div class="btn btn-adjust btn-decrement" onclick="setCounterValue(getCounterValue() - 1)">-</div>
+		<div class="btn btn-reset" onclick="setCounterValue(0)">RESET</div>
 	</div>
 </body>
 
