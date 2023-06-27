@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toggle</title>
+
+	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.counter {
+			width: 200px;
+			border: 1px solid black;
+			display: grid;
+			grid-template-rows: 50px 40px 30px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.number {
+			background: yellow;
+			grid-column: span 2;
+		}
+
+		.btn-increment {
+			background: green;
+		}
+
+		.btn-decrement {
+			background: blue;
+		}
+
+		.btn-reset {
+			background: red;
+			grid-column: span 2;
+		}
+	</style>
+
+	<script defer>
+
+	</script>
+</head>
+
+<body>
+	<div class="counter">
+		<div class="number"></div>
+		<div class="btn-adjust btn-increment"></div>
+		<div class="btn-adjust btn-decrement"></div>
+		<div class="btn-reset"></div>
+	</div>
+</body>
+
+</html>
